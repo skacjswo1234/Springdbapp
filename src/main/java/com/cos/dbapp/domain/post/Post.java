@@ -21,7 +21,7 @@ public class Post {
 	private String content;
 	
 	// jpa (java Persistence API\
-	@JoinColumn(name = "myid") // 조인의 Foreign키의 이름을 바꾸는 어노테이션이다.(잡기술)
+	@JoinColumn(name = "user_id") // 조인의 Foreign키의 이름을 바꾸는 어노테이션이다.(잡기술)
 	@ManyToOne //Foreign 키를 만드는 어노테이션이다 JPA기술 -> hibernate -> ORM 
 	private User user;  // ORM 사용
 	
