@@ -1,4 +1,4 @@
-# DBAPP
+# DBAPP~
 
 ### 데이터베이스 생성 방법
 ```SQL
@@ -10,7 +10,7 @@ create database koreadb;
 
 ```
 ###추가의존성
-
+```
 	<dependency>
     <groupId>org.apache.tomcat</groupId>
     <artifactId>tomcat-jasper</artifactId>
