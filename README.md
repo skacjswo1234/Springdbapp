@@ -69,3 +69,7 @@ INSERT INTO post(title, content, myid) VALUES('제목4','내용4',2);
 INSERT INTO post(title, content, myid) VALUES('제목5','내용5',2);
 ```
 
+### 주소 아이피 일단 
+```
+https://www.juso.go.kr/addrlink/addrLinkUrl.do?confmKey=devU01TX0FVVEgyMDIxMDcwNTE3MjgyMzExMTM2MTE=&returnUrl=http://localhost:8000
+```

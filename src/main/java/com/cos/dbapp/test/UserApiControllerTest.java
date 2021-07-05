@@ -38,8 +38,10 @@ public class UserApiControllerTest {
 	// http://localhost:8000/user/2
 	// 유저들을 정보를 하나씩 찾는 방법.
 	@GetMapping("/test/user/{id}") //PathValue 방식을 요즘은 많이 선호한다.
-	public User findById(@PathVariable int id) {
-		return userRepository.findById(id).get(); 
+	public String findById(@PathVariable int id) {
+		User userEntity = userRepository.findById(id).get(); 
+		System.out.println(userEntity);
+		return "ok"; 
 	}
 	// username만 찾는 방법.
 	@GetMapping("/test/user/username/{username}")

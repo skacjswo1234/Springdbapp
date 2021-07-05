@@ -1,6 +1,7 @@
 package com.cos.dbapp.domain.post;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,9 +23,15 @@ public class Post {
 	
 	// jpa (java Persistence API\
 	@JoinColumn(name = "user_id") // 조인의 Foreign키의 이름을 바꾸는 어노테이션이다.(잡기술)
-	@ManyToOne //Foreign 키를 만드는 어노테이션이다 JPA기술 -> hibernate -> ORM 
+	@ManyToOne(fetch = FetchType.EAGER) //Foreign 키를 만드는 어노테이션이다 JPA기술 -> hibernate -> ORM 
 	private User user;  // ORM 사용
 	
+	
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", content=" + content + ", user=" + user + "]";
+	}
+
 	public User getUser() {
 		return user;
 	}
