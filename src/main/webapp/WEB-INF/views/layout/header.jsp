@@ -29,7 +29,7 @@
 					</c:when>
 					<c:otherwise>
 						<li class="nav-item"><a class="nav-link" href="/post/saveForm">글쓰기</a></li>
-						<li class="nav-item"><a class="nav-link" href="/user/loginForm">회원정보변경</a></li> <!--인증이필요한파일은 user -->
+						<li class="nav-item"><a class="nav-link" href="/user/updateForm">회원정보변경</a></li> <!--인증이필요한파일은 user -->
 						<li class="nav-item"><a class="nav-link" href="/user/logout">로그아웃</a></li>
 					</c:otherwise>
 				</c:choose>

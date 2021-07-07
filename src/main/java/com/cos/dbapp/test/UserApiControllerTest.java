@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cos.dbapp.domain.user.User;
 import com.cos.dbapp.domain.user.UserRepository;
+import com.cos.dbapp.util.Script;
 
 @RestController
 public class UserApiControllerTest {
@@ -53,9 +54,10 @@ public class UserApiControllerTest {
 	public String login(@RequestBody User user) {
 		User userEntity = userRepository.mLogin(user.getUsername(), user.getPassword());
 		if(userEntity == null) {
-			return "loginfail";
+			
+			return Script.back("로그인실패");
 		} else {
-			return "login success";
+			return Script.href("/");
 		}
 	}
 	@DeleteMapping("/test/user/{id}")
