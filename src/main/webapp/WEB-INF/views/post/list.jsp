@@ -6,7 +6,7 @@
 <div class="container">
 
 
-	<c:forEach var="post" items="${postsEntity}">
+	<c:forEach var="post" items="${postsEntity}"> <!-- items = for each문으로 바뀐다고 생각 var = post는 페이지스코프에 담김-->
 		<!-- var은 페이지스코프에들어감 -->
 
 		<div class="card">
@@ -19,8 +19,7 @@
 		<br/>
 		<!-- End of Card -->
 	</c:forEach>
-
-
+					
 
 </div>
 <!-- End Of Container -->
