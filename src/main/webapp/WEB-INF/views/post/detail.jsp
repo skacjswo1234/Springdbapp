@@ -6,9 +6,10 @@
 <div class="container">
 
 	<c:if test="${sessionScope.principal.id == postEntity.user.id}"> <!-- empty 있는지없는지 유무 -->
-		<a href="	#" class="btn btn-warning">수정</a>
-		<form action="#" method="post" style="display: inline-block">
-			<button id="btn-delete" class="btn btn-danger" type="submit">삭제</button>
+		<a href="/post/${postEntity.id}/updateForm" class="btn btn-warning">수정</a>
+		
+		<form style="display: inline-block" onsubmit="deletePost()">
+			<button id="btn-delete" class="btn btn-danger" type="submit" >삭제</button>
 		</form>
 	</c:if>
 
@@ -57,5 +58,25 @@
 	<br />
 </div>
 
+
+<Script>
+	async function deletePost(){
+		event.preventDefault();
+		let response = await fetch("/post/${postEntity.id}",{
+			method:"delete",
+			
+		});
+		let parseResponse = await response.text();
+		
+		console.log(parseResponse);
+		console.log("/post/${postEntity.id}");
+		if(parseResponse === "ok"){
+			
+			location.href="/";
+		}
+	}
+	
+
+</Script>
 <%@ include file="../layout/footer.jsp"%>
 
