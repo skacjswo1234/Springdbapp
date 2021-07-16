@@ -2,7 +2,7 @@ package com.cos.dbapp.util;
 
 public class Script {
 
-	public static String href(String uri, String msg) {
+	synchronized public static String href(String uri, String msg) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");
 		sb.append("alert('"+msg+"');");
