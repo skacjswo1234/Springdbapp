@@ -1,5 +1,8 @@
 package com.cos.dbapp.web;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -12,22 +15,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.cos.dbapp.domain.comment.Comment;
+import com.cos.dbapp.domain.comment.CommentRepository;
 import com.cos.dbapp.domain.post.Post;
 import com.cos.dbapp.domain.post.PostRepository;
 import com.cos.dbapp.domain.user.User;
 import com.cos.dbapp.util.Script;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor // final이 붙어있는 객체들을 자동으로 의존성주입을 해준다. 생성자를 통해서 주입하는것을 대신역할해준다.
 @Controller
 public class postController {
 
 	private final PostRepository postRepository;
 	private final HttpSession session;
-
-	// dependency 의존성 이어준다.
-	public postController(PostRepository postRepository, HttpSession session) {
-		this.postRepository = postRepository;
-		this.session = session;
-	}
+	private final HttpServletRequest request;
+	private final CommentRepository commentRepository;
+	
 
 	@GetMapping({ "/", "/post" })
 	public String list(Model model) { // model = request (Spring 지원)
@@ -42,6 +47,10 @@ public class postController {
 		System.out.println("받은 아이디 : "+id);
 		Post postEntity = postRepository.findById(id).get();
 		model.addAttribute("postEntity", postEntity);
+		
+		List<Comment> commentsEntity = commentRepository.mFindAllByPostId(id);
+		model.addAttribute("commentsEntity",commentsEntity);
+		
 		return "post/detail";
 
 	}

@@ -13,18 +13,15 @@ import com.cos.dbapp.domain.user.User;
 import com.cos.dbapp.domain.user.UserRepository;
 import com.cos.dbapp.util.Script;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 @Controller
 public class UserController {
 	
 	private final UserRepository userRepository;
 	private final HttpSession session;
 	
-	
-	
-	public UserController(UserRepository userRepository, HttpSession session) {
-		this.userRepository = userRepository;
-		this.session = session;
-	}
 
 	@GetMapping("/auth/joinForm") 
 	// auth 풀더는 인증이필요없는 폴더로 지정 할 예정
