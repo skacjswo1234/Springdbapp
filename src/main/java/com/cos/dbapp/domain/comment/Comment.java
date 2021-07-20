@@ -9,6 +9,7 @@ import javax.persistence.ManyToOne;
 
 import com.cos.dbapp.domain.post.Post;
 import com.cos.dbapp.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Data;
 
@@ -21,10 +22,12 @@ public class Comment {
 	private int id; // 프라이머리키 (기본키)
 	private String text; // 댓글 내용
 	
+	@JsonIgnoreProperties({"posts"}) // posts부분은 json으로 파싱하지 않게다는 말이다.
 	@JoinColumn(name = "user_id") // Foreign키 이름
 	@ManyToOne()
 	private User user;
 	
+	@JsonIgnoreProperties({"user"}) // users부분은 json으로 파싱하지 않겠다는 말이다.
 	@JoinColumn(name = "post_id") // Foreign키 이름
 	@ManyToOne()
 	private Post post;
